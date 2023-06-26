@@ -1,0 +1,175 @@
+#!/bin/bash
+
+# get os
+termux="/data/data/com.termux/files/usr"
+linux="/usr"
+
+# check os
+if [ -d $termux ];then
+  os=$termux
+  rootx="/data/data/com.termux"
+elif [ -d $linux ];then
+  os=$linux
+  rootx="/"
+fi
+
+# array path
+declare -a arrp arrpo arrf
+
+# input array
+arrp[0]="--loco"
+arrp[1]="--locb"
+arrp[2]="--locl"
+arrp[3]="--locx"
+arrp[4]="--loch"
+arrp[5]="--locs"
+arrp[6]="--locsa"
+arrp[7]="--locd"
+arrp[8]="--loca"
+arrp[9]="--locai"
+arrp[10]="--locab"
+arrp[11]="--locq"
+arrp[12]="--locqi"
+arrp[13]="--locqo"
+arrp[14]="--lochp"
+arrp[15]="--locr"
+
+# output array directory
+arrpo[0]="$os"
+arrpo[1]="$os/bin"
+arrpo[2]="$os/lib"
+arrpo[3]="$os/lib/xlucy"
+arrpo[4]="$os/lib/xlucy/headX"
+arrpo[5]="$os/lib/xlucy/headX/settingsX"
+arrpo[6]="$os/lib/xlucy/headX/scriptsactionX"
+arrpo[7]="$os/lib/xlucy/headX/settingsX/desainX"
+arrpo[8]="$os/lib/xlucy/headX/settingsX/actionX"
+arrpo[9]="$os/lib/xlucy/headX/settingsX/actionX/inputaction"
+arrpo[10]="$os/lib/xlucy/headX/settingsX/aboutX"
+arrpo[11]="$os/lib/xlucy/headX/settingsX/questionX"
+arrpo[12]="$os/lib/xlucy/headX/settingsX/questionX/inputquestion"
+arrpo[13]="$os/lib/xlucy/headX/settingsX/questionX/outputquestion"
+arrpo[14]="$os/lib/xlucy/headX/settingsX/helpX"
+arrpo[15]="$rootx"
+
+# output array file
+arrf[0]="$os/lib/xlucy/strukturlucy.txt"
+arrf[1]="$os/lib/xlucy/headX/settingsX/talkx.sh"
+arrf[2]="$os/lib/xlucy/headX/settingsX/filemanagerx.sh"
+arrf[3]="$os/lib/xlucy/headX/settingsX/listx.sh"
+arrf[4]="$os/lib/xlucy/headX/settingsX/filetotalx.sh"
+arrf[5]="$os/lib/xlucy/headX/settingsX/filefindx.sh"
+arrf[6]="$os/lib/xlucy/headX/settingsX/createquestions.sh"
+arrf[7]="$os/lib/xlucy/headX/settingsX/permissionx.sh"
+arrf[8]="$os/lib/xlucy/headX/settingsX/desainX/answerslucy"
+arrf[9]="$os/lib/xlucy/headX/settingsX/desainX/loading"
+arrf[10]="$os/lib/xlucy/headX/settingsX/desainX/tabelhasil"
+arrf[11]="$os/lib/xlucy/headX/settingsX/desainX/tabelizin"
+arrf[12]="$os/lib/xlucy/headX/settingsX/desainX/tabellucy"
+arrf[13]="$os/lib/xlucy/headX/settingsX/desainX/lucy.txt"
+arrf[14]="$os/lib/xlucy/headX/settingsX/desainX/lucycontrol.txt"
+arrf[15]="$os/lib/xlucy/headX/settingsX/desainX/lucycontrolizin.txt"
+arrf[16]="$os/lib/xlucy/headX/settingsX/desainX/lucycontrolmake.txt"
+arrf[17]="$os/lib/xlucy/headX/settingsX/desainX/lucycontrolpath.txt"
+arrf[18]="$os/lib/xlucy/headX/settingsX/desainX/lucycontroltandai.txt"
+arrf[19]="$os/lib/xlucy/headX/settingsX/aboutX/rememberx.txt"
+arrf[20]="$os/lib/xlucy/headX/settingsX/aboutX/modulex.txt"
+arrf[21]="$os/lib/xlucy/headX/settingsX/aboutX/versionx.txt"
+arrf[22]="$os/lib/xlucy/headX/settingsX/aboutX/pathdirx.txt"
+arrf[23]="$os/lib/xlucy/headX/settingsX/aboutX/pathfilex.txt"
+arrf[24]="$os/lib/xlucy/headX/settingsX/questionX/inputquestion/1iquestions.txt"
+arrf[25]="$os/lib/xlucy/headX/settingsX/questionX/outputquestion/1oquestions.txt"
+arrf[26]="$os/lib/xlucy/headX/settingsX/helpX/helpx.txt"
+arrf[27]="$os/lib/xlucy/headX/settingsX/helpX/opsihelpj.txt"
+arrf[28]="$os/lib/xlucy/headX/settingsX/helpX/opsihelpl.txt"
+arrf[29]="$os/lib/xlucy/headX/settingsX/helpX/opsihelpt.txt"
+arrf[30]="$os/lib/xlucy/headX/settingsX/helpX/pathhelp.txt"
+arrf[31]="$os/lib/xlucy/headX/settingsX/createactions.sh"
+arrf[32]="$os/lib/xlucy/headX/settingsX/actionX/inputaction/0iactions.txt"
+
+# check all directory xlucy
+importdir(){
+  filep="${arrpo[10]}/pathdirx.txt"
+  if [ -f $filep ];then
+    # check delete
+    readflp=( $(cat $filep) )
+    if [[ ${readflp[0]} == ${arrpo[0]} ]] || [ -z ${readflp[0]} ];then
+      filek=${readflp[0]}
+    else
+      rm -rf $filep; touch $filep
+    fi
+    # save path
+    if [ -z $filek ];then
+      for gf in ${arrpo[@]};do
+        echo "$gf" >> $filep
+      done
+    fi
+  else
+    touch $filep; importdir
+  fi
+}
+
+# check all file xlucy
+importf(){
+  ffile="${arrpo[10]}/pathfilex.txt"
+  if [ -f $ffile ];then
+    # check delete
+    readif=( $(cat $ffile) )
+    if [[ ${readif[0]} != ${arrf[0]} ]] || [ -z ${readif[0]} ];then
+      fileks=${readif[0]}
+    else
+      rm $ffile; touch $ffile
+    fi
+    # save path
+    if [ -z $fileks ];then
+      for gff in ${arrf[@]};do
+        echo $gff >> $ffile
+      done
+    fi
+  else
+    touch $ffile; importf
+  fi
+}
+
+# check permissions all file xlucy
+checkpermission(){
+  arrcp=( ${arrpo[@]} ${arrf[@]} )
+  for cpf in ${arrcp[@]};do
+    formatx=${cpf: -3}
+    if [[ $formatx == ".sh" ]];then bash ${arrf[7]} -rwx $cpf
+    elif [[ $formatx == "txt" ]];then bash ${arrf[7]} -rw $cpf
+    else bash ${arrf[7]} -rwx $cpf; fi
+  done
+}
+
+# check module uswd in xlucy
+checkmodule(){
+  for cmf in $(cat ${arrf[20]});do
+    if ! [ -f "${arrpo[1]}/$cmf" ];then echo "[!] file binary < $cmf > not found"; exit; fi
+  done
+}
+
+# check file path
+for cfi in ${arrf[@]};do
+  if ! [ -f $cfi ];then echo "[!] file < $cfi > not found"; fi
+done
+
+# check directory path
+for cdi in ${arrpo[@]};do
+  if ! [ -d $cdi ];then echo "[!] directory < $cdi > not found"; fi
+done
+
+# import path
+for i in ${!arrp[@]};do
+  if [[ $1 == ${arrp[i]} ]] && [ -z $2 ];then
+    echo ${arrpo[i]}
+  fi
+done
+
+# start checking
+if [[ $1 == "--check" ]] && [[ $2 == "--dir" ]];then importdir
+elif [[ $1 == "--check" ]] && [[ $2 == "--file" ]];then importf
+elif [[ $1 == "--check" ]] && [[ $2 == "--permission" ]];then checkpermission
+elif [[ $1 == "--check" ]] && [[ $2 == "--module" ]];then checkmodule
+elif [[ $1 == "--help" ]] && [ -z $2 ];then cat ${arrf[30]}
+fi

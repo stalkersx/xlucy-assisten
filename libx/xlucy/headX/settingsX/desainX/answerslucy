@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#get text space
+OLDIFS=$IFS
+IFS=$'\n'
+
+#color
+warna="\e[0;35m"
+
+# run text
+ctext(){
+  declare -a c
+  teks=$(expr length $1)
+  b=0
+  while [[ $b -le $teks ]];do
+    c[$b]="${1:$b:1}"; ((b++))
+  done
+
+  if [[ $teks -le 15 ]];then
+    printf "\n\t\t\t! "
+  elif [[ $teks -gt 15 ]] && [[ $teks -le 30 ]];then
+    printf "\n\t\t! "
+  elif [[ $teks -gt 30 ]] && [[ $teks -le 50 ]];then
+    printf "\n\t! "
+  elif [[ $teks -gt 50 ]];then
+    printf "\n  ! "
+  fi
+  for d in ${c[@]};do
+    sleep 0s; printf "$d"
+  done
+  echo; echo; unset c
+}
+
+# DESAIN TALK XLUCY
+clear
+echo -e "$warna"
+cat $(xlucy-path --locd)/lucy.txt
+ctext $1
+
+# close text space
+IFS=$OLDIFS

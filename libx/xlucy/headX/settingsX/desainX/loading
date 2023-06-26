@@ -1,0 +1,15 @@
+#!/bin/bash
+
+locd="$(xlucy-path --locd)"
+
+n=("0%" "10%" "22%" "46%" "59%" "62%" "84%" "95%" "100%")
+ti=("." ".." "..." "....")
+for jm in ${n[@]};do
+  for wt in ${ti[@]};do
+    clear
+    echo -e "$warna $(cat $locd/lucy.txt)"
+    printf "\n\t\t! [%s] mohon menunggu %s" $jm $wt
+    sleep 0.3s
+  done
+done
+echo -e "\n"

@@ -1,0 +1,13 @@
+bash
+ls
+cat
+echo
+du
+nano
+pwd
+chmod
+cp
+mv
+rm
+mkdir
+less

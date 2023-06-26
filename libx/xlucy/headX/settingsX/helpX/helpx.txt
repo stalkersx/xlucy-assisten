@@ -1,0 +1,15 @@
+
+xlucy [options] [comments]
+
+options :
+-p			  code settings [mode monitor]
+-k			  file manager [mode monitor]
+-j			  check total file and directory in path
+-l			  list about file xlucy
+-f			  show detail a file
+-t			  talking with lucy
+-v			  version
+-h			  help
+
+example comments :
+lucyx -k ~/

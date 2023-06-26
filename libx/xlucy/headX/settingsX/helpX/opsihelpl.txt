@@ -1,0 +1,10 @@
+
+xlucy -l [options]
+
+options :
+--action		list command for lucy
+--dir			list directory path
+--file			list file path
+--module		module used
+--help			help more
+

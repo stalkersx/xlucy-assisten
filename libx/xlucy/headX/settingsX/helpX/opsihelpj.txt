@@ -1,0 +1,9 @@
+
+xlucy -j [options] /path/path
+
+options :
+--list				opsi show location in path
+--ftf				opsi show path in path
+--help				help more
+
+

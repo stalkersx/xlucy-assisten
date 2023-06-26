@@ -1,0 +1,15 @@
+/data/data/com.termux/files/usr
+/data/data/com.termux/files/usr/bin
+/data/data/com.termux/files/usr/lib
+/data/data/com.termux/files/usr/lib/xlucy
+/data/data/com.termux/files/usr/lib/xlucy/headX
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX
+/data/data/com.termux/files/usr/lib/xlucy/headX/scriptactionsX
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/desainX
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/actionX
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/actionX/inputaction
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/aboutX
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/questionX
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/questionX/inputquestion
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/questionX/outputquestion
+/data/data/com.termux/files/usr/lib/xlucy/headX/settingsX/helpX

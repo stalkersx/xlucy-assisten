@@ -1,0 +1,137 @@
+#!/bin/bash
+
+# notification
+notif(){
+  echo "[!] $1"; exit
+}
+
+# data not found
+dnfound(){
+  if ! [[ -z $1 ]];then
+    echo $1; exit
+  fi
+}
+
+# get import path
+dnfound "$(xlucy-path)"
+dnfound "$(xlucy-path --check --dir)"
+dnfound "$(xlucy-path --check --file)"
+dnfound "$(xlucy-path --check --module)"
+dnfound "$(xlucy-path --check --permission)"
+
+# path
+loch="$(xlucy-path --loch)"
+locs="$(xlucy-path --locs)"
+lochp="$(xlucy-path --lochp)"
+locsa="$(xlucy-path --locsa)"
+
+# STARTING
+
+# open file settings
+if [[ $1 == "-p" ]] && [ -z $3 ];then
+  # get directory or file settings
+  filep=$(exec $locs/filefindx.sh "[$2]" $loch)
+  filepc="${filep:3}"
+
+  for sa in $(ls $locsa);do
+    dsa=${sa:2}
+    asa=${dsa::-3}
+    if [[ $2 == $asa ]];then
+      filepc="$locsa/$sa"
+    fi
+    unset dsa asa
+  done
+
+  if [ -z $2 ];then cd $loch
+    exec $locs/filemanagerx.sh "menu pengaturan" $loch
+  elif [ -z $filepc ];then
+    notif "nothing file or directory < $2 > in settings file"
+  elif [ -f $filepc ];then
+    nano -l $filepc
+  elif [ -d $filepc ];then cd $filepc
+    exec $locs/filemanagerx.sh "menu $2" $loch
+  else
+    notif "run < xlucy -p /path/filesissettings > for open file settings"
+  fi
+
+# file manager
+elif [[ $1 == "-k" ]] && [ -z $3 ];then
+  if [ -z $2 ];then
+    exec $locs/filemanagerx.sh "kelola berkas"
+  elif [ -d $2 ];then
+    cd $2
+    exec $locs/filemanagerx.sh "kelola berkas"
+  else
+    notif "run < xlucy -k /path/directory > for open to path"
+  fi
+
+# find a file
+elif [[ $1 == "-f" ]] && [ -z $5 ];then
+  if [ -z $2 ];then
+    notif "run < xlucy -f file /path/path -s[dir,dir] > for found file"
+  else
+    exec $locs/filefindx.sh $2 $3 $4
+  fi
+
+# get total file in path
+elif [[ $1 == "-j" ]] && [ -z $4 ];then
+  if [ -z $2 ];then
+   notif "run < xlucy -j /path/path > for total file"; exit
+  elif [[ $2 == "--ftf" ]] && [ -d $3 ];then
+    exec $locs/filetotalx.sh $3 1
+  elif [[ $2 == "--list" ]] && [ -d $3 ];then
+    exec $locs/filetotalx.sh $3 3
+  elif [[ $2 == "--help" ]] && [ -z $3 ];then
+    cat $lochp/opsihelpj.txt; exit
+  else
+    if [ $3 ];then
+      notif "[!] run < xlucy -j --help"; exit
+    else
+      exec $locs/filetotalx.sh $2 2
+    fi
+  fi
+
+# show list about lucy
+elif [[ $1 == "-l" ]] && [ -z $5 ];then
+  if [[ $2 == "--action" ]];then
+    exec $locs/listx.sh 1
+  elif [[ $2 == "--dir" ]];then
+    exec $locs/listx.sh 2
+  elif [[ $2 == "--file" ]];then
+    exec $locs/listx.sh 3
+  elif [[ $2 == "--module" ]];then
+    exec $locs/listx.sh 4
+  elif [[ $2 == "--scripts" ]];then
+    exec $locs/listx.sh 5
+  elif [[ $2 == "--help" ]];then
+    cat $lochp/opsihelpl.txt
+  else
+    notif "try < xlucy -l --help > for more information"
+  fi
+
+# talking with lucy
+elif [[ $1 == "-t" ]] && [ -z $3 ];then
+  if [ -z $2 ];then
+    exec $locs/talkx.sh
+  elif [[ $2 == "--question" ]];then
+    exec $locs/createquestions.sh
+  elif [[ $2 == "--action" ]];then
+    exec $locs/createactions.sh
+  elif [[ $2 == "--help" ]];then
+    cat $lochp/opsihelpt.txt
+  else
+    notif "try < xlucy -t --help > for help more"
+  fi
+
+# show version
+elif [[ $1 == "-v" ]] && [ -z $2 ];then
+  cat $(xlucy-path --locab)/versionx.txt
+
+# show help
+elif [[ $1 == "-h" ]] || [[ $1 == "--help" ]] && [ -z $2 ];then
+  cat $lochp/helpx.txt
+
+# command not found
+else
+  notif "run < xlucy --help > for help"
+fi

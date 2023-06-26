@@ -1,0 +1,81 @@
+#!/bin/bash
+
+#openspace
+OLDIFS=$IFS
+IFS=$'\n'
+
+#open window
+winopen(){
+  for i in {0..70};do
+    if [[ $i -eq 0 ]];then
+      printf "╭"
+    elif [[ $i -eq 70 ]];then
+      printf "╮"
+    else
+      printf "—"
+    fi
+  done
+  echo
+}
+
+#close window
+winclose(){
+  for i in {0..70};do
+    if [[ $i -eq 0 ]];then
+      printf "╰"
+    elif [[ $i -eq 70 ]];then
+      printf "╯"
+    else
+      printf "—"
+    fi
+  done
+  echo
+}
+
+#show list
+gettext(){
+  a="$(expr length $1)"
+  b=0
+  while [[ $b -le $a ]];do
+    c[$b]=${1:$b:1}; ((b++))
+  done
+
+  s=" "
+  d=0; gline=$2; gspace=$((gline+a))
+  for n in {0..70};do
+    if [[ $n -eq 0 ]] || [[ $n -eq 70 ]];then
+      printf "|"
+    elif [[ $n -gt $gline ]];then
+      printf "${c[d]}"; ((d++))
+    fi
+    if [[ $n -lt $gline ]];then
+      printf "$s"
+    elif [[ $n -gt $gspace ]];then
+      printf "$s"
+    fi
+  done
+  echo; unset c
+}
+
+#get list
+if [ $1 ] && [ -x $1 ];then
+  arr=( $(ls $1) )
+else
+  arr=($(ls))
+fi
+
+#run window
+winopen
+for j in ${!arr[@]};do
+  if [ -f ${arr[j]} ];then
+    file=`ls -l ${arr[j]}`
+    gettext "$j. ${file:0:10} ${arr[j]}" 2
+  elif [ -d ${a[j]} ];then
+    folder=`ls -ld ${arr[j]}`
+    gettext "$j. ${folder:0:10} ${arr[j]}" 2
+  fi
+done
+winclose
+
+#closespace
+IFS=$OLDIFS

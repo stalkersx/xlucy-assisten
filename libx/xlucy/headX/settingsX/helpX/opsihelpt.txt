@@ -1,0 +1,8 @@
+
+xlucy -t [options] [commands]
+
+options :
+--question		create question to lucy
+--action		create file scripts to question lucy
+--help			help more
+

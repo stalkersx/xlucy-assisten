@@ -1,0 +1,28 @@
+
+xlucy [path]
+xlucy-path [options] [about]
+
+path :
+--locr							location directory root
+--loco							location directory user
+--locb							location directory bin
+--locl							location directory lib
+--locx							location directory xlucy
+--loch							location directory headX
+--locs							location directory settingsX
+--locsa							location directory scripts-actionX
+--locd							location directory desainX
+--loca							location directory actionX
+--locai							location directory inputaction
+--locq							location directory questionX
+--locqi							location directory inputquestion
+--locqo							location directory outputquestion
+--lochp							location directory helpX
+
+options :
+--check --permission
+--check --dir						check all directory in xlucy
+--check --file						check all file file in xlucy
+--check --module					check all module used
+--help							help more
+
