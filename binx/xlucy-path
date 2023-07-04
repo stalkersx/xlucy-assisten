@@ -151,12 +151,17 @@ checkmodule(){
 
 # check file path
 for cfi in ${arrf[@]};do
-  if ! [ -f $cfi ];then echo "[!] file < $cfi > not found"; fi
+  if ! [ -f $cfi ];then echo "[!] file < $cfi > not found"; exit; fi
 done
 
 # check directory path
 for cdi in ${arrpo[@]};do
-  if ! [ -d $cdi ];then echo "[!] directory < $cdi > not found"; fi
+  if ! [ -d $cdi ];then echo "[!] directory < $cdi > not found"
+    if [[ $cdi == "$os/lib/xlucy/headX/scriptsactionX" ]];then mkdir $cdi
+      echo "[!] create directory < $cdi > to xlucy"
+    fi
+    exit
+  fi
 done
 
 # import path
