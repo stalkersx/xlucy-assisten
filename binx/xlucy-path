@@ -11,6 +11,10 @@ if [ -d $termux ];then
 elif [ -d $linux ];then
   os=$linux
   rootx="/"
+  # get root access
+  if [[ $(whoami) != "root" ]];then
+    echo "[!] need root access"; exit
+  fi
 fi
 
 # array path

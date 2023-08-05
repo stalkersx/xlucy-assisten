@@ -27,8 +27,12 @@ check_directory(){
 }
 
 # check shell
-if [ -d $PREFIX ];then path="/data/data/com.termux/files"
+if [ -d /data/data/com.termux/files/usr ];then path="/data/data/com.termux/files"
 elif [ -d /usr ];then path=""
+  # get root access
+  if [[ $(whoami) != "root" ]];then
+    echo "[!] use <sudo ./install-xlucy.sh> get root access"; exit
+  fi
 else
   echo "[!] unknown shell"
 fi
