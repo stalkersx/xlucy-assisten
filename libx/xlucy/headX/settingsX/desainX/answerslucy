@@ -35,6 +35,7 @@ ctext(){
 clear
 echo -e "$warna"
 cat $(xlucy-path --locd)/lucy.txt
+termux-tts-speak $1
 ctext $1
 
 # close text space

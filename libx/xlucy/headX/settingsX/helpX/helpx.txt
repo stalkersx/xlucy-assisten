@@ -6,7 +6,7 @@ options :
 -k			  file manager [mode monitor]
 -j			  check total file and directory in path
 -l			  list about file xlucy
--f			  show detail a file
+-f			  found directory or file
 -t			  talking with lucy
 -v			  version
 -h			  help

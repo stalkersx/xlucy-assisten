@@ -1,0 +1,14 @@
+
+# usage :
+xlucy -f file/dir
+xlucy -f [file,dir,file]
+>>> find from filesystem
+
+xlucy -f file/dir /path/to/dir
+xlucy -f [file,dir,file] /path/to/dir
+>>> find from path directory
+
+xlucy -f [file,dir,file] -s[dir,dir,dir]
+xlucy -f [file,dir,file] /path/to/dir -s[dir,dir,dir]
+>>> find and skip directory -s[]
+

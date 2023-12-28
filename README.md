@@ -17,7 +17,7 @@ COMMAND FIND FILE SETTINGS :
   
 - $ xlucy -l --action
   >>> show action command talking xlucy
-  
+ 
 COMMAND FILE MANAGER :
 - $ xlucy -k
   $ xlucy -k <[path]>
@@ -26,7 +26,20 @@ COMMAND FILE MANAGER :
 - $ xlucy -p
   $ xlucy -p <[directory_name]>
   >>> open file manager to xlucy settings
+
+COMMAND FOUND FILE OR DIRECTORY :
+- $ xlucy -f <[file_name/dir_name]>
+  $ xlucy -f <[[file_name,dir_name]]>
+  |__ found from filesystem
   
+- $ xlucy -f <[file_name/dir_name]> <[/path/path]>
+  $ xlucy -f <[[file_name,dir_name]]> <[/path/path]>
+  |__ found from path directory
+  
+- $ xlucy -f <[[file,file]]> <[-s[dir,dir]]>
+  $ xlucy -f <[[file,file]]> <[/path/path]> <[-s[dir,dir]]>
+  |__ found with skip directory (-s[])
+
 COMMAND CHECKING DIRECTORY :
 - $ xlucy -j <[path]>
   $ xlucy -j --ftf <[path]>
@@ -34,6 +47,9 @@ COMMAND CHECKING DIRECTORY :
 
 - $ xlucy -j --list <[path]>
   >>> show location file and directory from path
+  
+- $ xlucy -j --size <[path]>
+  >>> show size file in path directory
   
 COMMAND TALKING :
 - $ xlucy -t

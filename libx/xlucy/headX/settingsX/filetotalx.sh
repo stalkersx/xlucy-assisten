@@ -31,10 +31,18 @@ jfile(){
   done
 }
 
+# check size all file in directory
+sfile(){
+	for sz in $(ls -a);do
+	  echo $(du -sh $sz)
+	done
+}
+
 # check path total file
 if [ -d $1 ] && [[ $2 -eq 1 ]];then cd $1; jfile
 elif [ -d $1 ] && [[ $2 -eq 2 ]];then cd $1; jfile 1
 elif [ -d $1 ] && [[ $2 -eq 3 ]];then cd $1; jfile 2
+elif [ -d $1 ] && [[ $2 -eq 4 ]];then cd $1; sfile
 else
   echo "[!] path < $1 > unknown"; exit
 fi

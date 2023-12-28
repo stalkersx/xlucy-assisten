@@ -2,8 +2,9 @@
 xlucy -j [options] /path/path
 
 options :
+--size				opsi show size from file in path
 --list				opsi show location in path
---ftf				opsi show path in path
+--ftf				opsi show total directory path in path
 --help				help more
 
 

@@ -101,9 +101,9 @@ scanchar(){
     gchar=${scan:0:jchar}
     if [[ $sfile == $gchar ]];then
       if [ -d $scan ];then
-        echo "[!] $(pwd)/$scan"
+        echo "[d] $(pwd)/$scan"
       elif [ -f $scan ];then
-        echo "[!] $(pwd)/$scan"
+        echo "[f] $(pwd)/$scan"
       fi
     fi
     # cari char folder ke folder

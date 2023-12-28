@@ -69,8 +69,14 @@ elif [[ $1 == "-k" ]] && [ -z $3 ];then
 elif [[ $1 == "-f" ]] && [ -z $5 ];then
   if [ -z $2 ];then
     notif "run < xlucy -f file /path/path -s[dir,dir] > for found file"
+  elif [[ $2 == "--help" ]] && [ -z $3 ];then
+	cat $lochp/opsihelpf.txt; exit
   else
-    exec $locs/filefindx.sh $2 $3 $4
+    if [ $3 ];then
+		notif "run < xlucy -f --help > for help more"
+    else
+		exec $locs/filefindx.sh $2 $3 $4
+	fi
   fi
 
 # get total file in path
@@ -81,6 +87,8 @@ elif [[ $1 == "-j" ]] && [ -z $4 ];then
     exec $locs/filetotalx.sh $3 1
   elif [[ $2 == "--list" ]] && [ -d $3 ];then
     exec $locs/filetotalx.sh $3 3
+  elif [[ $2 == "--size" ]] && [ -d $3 ];then
+	exec $locs/filetotalx.sh $3 4
   elif [[ $2 == "--help" ]] && [ -z $3 ];then
     cat $lochp/opsihelpj.txt; exit
   else
