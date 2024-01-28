@@ -43,7 +43,7 @@ scanfile(){
       fi
     done
     # scan folder ke folder
-    if [ -d $scan ];then
+    if [ -d $scan ] && [ -x $scan ] && [ -r $scan ];then
       if ! [ -r $scan ];then idx=${#skipdir[@]}
         skipdir[$idx]=$scan; continue
       fi
@@ -107,7 +107,7 @@ scanchar(){
       fi
     fi
     # cari char folder ke folder
-    if [ -d $scan ];then
+    if [ -d $scan ] && [ -x $scan ] && [ -r $scan ];then
       if ! [ -r $scan ];then idx=${#skipdir[@]}
         skipdir[$idx]=$scan; continue
       fi

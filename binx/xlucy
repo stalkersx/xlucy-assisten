@@ -72,11 +72,7 @@ elif [[ $1 == "-f" ]] && [ -z $5 ];then
   elif [[ $2 == "--help" ]] && [ -z $3 ];then
 	cat $lochp/opsihelpf.txt; exit
   else
-    if [ $3 ];then
-		notif "run < xlucy -f --help > for help more"
-    else
-		exec $locs/filefindx.sh $2 $3 $4
-	fi
+	exec $locs/filefindx.sh $2 $3 $4
   fi
 
 # get total file in path
