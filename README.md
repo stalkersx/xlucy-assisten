@@ -1,9 +1,12 @@
 # xlucy-assisten
 # version 1.2
 
-COMMAND INSTALL :
+COMMAND INSTALL TERMUX :
 - $ chmod +x install-xlucy.sh
 - $ ./install-xlucy.sh
+
+COMMAND INSTALL LINUX :
+- $ sudo bash install-xlucy.sh
 
 COMMAND FIND FILE SETTINGS :
 - $ xlucy -l --file
